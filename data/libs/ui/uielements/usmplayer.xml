@@ -1,0 +1,92 @@
+<UIElements name="Common">
+
+  <UIElement name="USMPlayer" controller_input="1">
+
+    <GFx file="USM_Player.gfx" layer="55">
+      <Constraints>
+		<!-- <Align mode="fixed"/>
+		<Position top="0" left="1600" width="2560" height="1080" /> -->
+        <Align mode="dynamic" valign="center" halign="center" scale="0" max="0"/>
+        <!-- <Align mode="fullscreen" scale="0" /> -->
+      </Constraints>
+    </GFx>
+
+    <variables>
+      <variable name="EnableAudio" varname="enableAudio" type="bool"/>
+      <variable name="ShowSubtitle" varname="showSubtitle" type="bool"/>
+      <variable name="Status" varname="m_status" type="int"/>
+    </variables>
+
+    <functions>
+
+      <function name="SetPlatform" funcname="fc_setPlatform">
+        <param name="id" desc="1 for pc, 2 for xbox, 4 for ps" type="int"/>
+      </function>
+
+      <!-- Video -->
+      <function name="Play" funcname="vPlay"/>
+      <function name="Pause" funcname="vPause" />
+      <function name="Resume" funcname="vResume" />
+      <function name="Stop" funcname="vStop" />
+      <function name="SetLoopMode" funcname="SetLoopMode">
+        <param name="Loop" desc="" type="bool"/>
+      </function>
+      <function name="SetMoviePath" funcname="setMoviePath">
+        <param name="Movie" desc="Path to movie file" type="string"/>
+      </function>
+
+      <!-- Audio -->
+      <function name="SelectAudioChannel" funcname="vSelectAudioChannel">
+        <param name="Channel" desc="" type="int"/>
+      </function>
+      <function name="SelectSubtitleChannel" funcname="vSelectSubtitleChannel">
+        <param name="Channel" desc="" type="int"/>
+      </function>
+
+      <function name="SetSubtitleVisibility" funcname="vSetSubtitleVisibility">
+        <param name="visible" desc="" type="bool"/>
+      </function>
+
+      <!-- BG -->
+      <function name="SetBGAlpha" funcname="setBackGroundAlpha">
+        <param name="Alpha" desc="Value between 0 and 100" type="float"/>
+      </function>
+
+      <!-- for loading -->
+      <function name="LoadingDone" funcname="fc_loadingDone"/>
+      <function name="SkipIntro" funcname="fc_skipIntro"/>
+
+      <function name="SetHelpBarButtons" funcname="fc_setHelpBarButtons">
+        <param name="Controls" desc="Array of split actual controllers which was needed in helpbar" type="string" />
+      </function>
+
+      <function name="SetProgress" funcname="fc_setProgress">
+        <param name="percent" desc="" type="float" />
+      </function>
+      <function name="SetDebug" funcname="fc_setDebug">
+        <param name="debug" desc="" type="string" />
+      </function>
+
+    </functions>
+
+    <events>
+      <event name="OnPlay" fscommand="onPlay" desc="" />
+      <event name="OnPause" fscommand="onPause" desc="" />
+      <event name="OnResume" fscommand="onResume" desc="" />
+      <event name="OnStop" fscommand="onStop" desc="">
+        <param name="VideoFinished" desc="True if Video was finished, false if stop was requested"  type="bool"/>
+      </event>
+      <event name="OnLooped" fscommand="onLooped" desc="" />
+      <event name="OnFileNotFound" fscommand="onFileNotFound" desc="" />
+      <event name="OnSkipable" fscommand="onSkipable" desc="">
+        <param name="Ability" desc="True if skip protection from video was changed on false "  type="bool"/>
+      </event>
+
+      <event name="OnHelpBarButtonSet" fscommand="onHelpBarButtonSet" desc="Want to translate buttons name">
+        <param name="ButtonCodeArr" desc="array split by vertical bar" type="string"/>
+      </event>
+    </events>
+
+  </UIElement>
+
+</UIElements>

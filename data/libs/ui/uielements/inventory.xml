@@ -1,0 +1,718 @@
+<UIElements name="Menus">
+
+  <UIElement name="Inventory" mouseevents="1" keyevents="0" cursor="1" controller_input="1">
+
+    <GFx file="inventory.gfx" layer="20">
+      <Constraints>
+        <!--<Align mode="dynamic" valign="center" halign="center" scale="1" max="0"  />-->
+        <Align mode="dynamic" valign="center" halign="center" scale="0" max="0" />
+      </Constraints>
+    </GFx>
+
+    <functions>
+
+      <function name="SetGameMode" funcname="fc_setGameMode">
+        <param name="Mode" desc="" type="int" />
+      </function>
+
+      <function name="SetGameLevel" funcname="fc_setGameLevel">
+        <param name="Level" desc="" type="int" />
+      </function>
+
+      <function name="SetGameDude" funcname="fc_setGameDude">
+        <param name="Dude" desc="" type="int" />
+      </function>
+
+      <function name="SetInputId" funcname="fc_setInputId">
+        <param name="InputId" desc="1 keyboard, 2 xbox, 4 ps" type="int" />
+      </function>
+
+      <function name="SetDebugMode" funcname="fc_setDebugMode">
+        <param name="Mode" desc="True enable debug mode" type="bool"/>
+      </function>
+
+      <function name="DebugCloudsVisibility" funcname="fc_debugCloudsVisibility">
+        <param name="Visibility" desc="True mean is visible" type="bool"/>
+      </function>
+
+      <function name="AddItem" funcname="fc_addInventoryItem">
+        <param name="InventoryId" desc="Index of inventory owner" type="wuid"/>
+        <param name="ItemId" desc="Index of item id that were added" type="wuid"/>
+      </function>
+
+      <function name="RemoveItem" funcname="fc_removeInventoryItem">
+        <param name="InventoryId" desc="Index of inventory owner" type="wuid"/>
+        <param name="ItemId" desc="Index of item id that were removed" type="wuid"/>
+      </function>
+
+      <function name="FillInventoryAll" funcname="fc_fillInventoryItemsAll">
+        <param name="InventoryId" desc="Index of inventory filled. Data are in items array." type="wuid"/>
+      </function>
+
+      <function name="FillItemInfoAll" funcname="fc_fillItemInfoAll" dynamic="1">
+        <param name="InventoryId" desc="Index of inventory filled. Data are in items array." type="wuid"/>
+      </function>
+
+      <function name="FillItemInfoExAll" funcname="fc_fillItemInfoExAll" dynamic="1">
+        <param name="InventoryId" desc="Index of inventory filled. Data are in items array." type="wuid"/>
+      </function>
+
+      <function name="FillPlayerArmorStats" funcname="fc_fillPlayerArmorStats" >
+        <param name="HeadStab" desc="" type="float"/>
+        <param name="HeadSlash" desc="" type="float"/>
+        <param name="HeadSmash" desc="" type="float"/>
+        <param name="BodyStab" desc="" type="float"/>
+        <param name="BodySlash" desc="" type="float"/>
+        <param name="BodySmash" desc="" type="float"/>
+        <param name="HandsStab" desc="" type="float"/>
+        <param name="HandsSlash" desc="" type="float"/>
+        <param name="HandsSmash" desc="" type="float"/>
+        <param name="LegsStab" desc="" type="float"/>
+        <param name="LegsSlash" desc="" type="float"/>
+        <param name="LegsSmash" desc="" type="float"/>
+        <param name="entityId" desc="Id of entity - player or horse or..." type="int"/>
+      </function>
+
+	  <function name="FillPlayerWeaponStats" funcname="fc_fillPlayerWeaponStats" >
+		    <param name="id" desc="" type="int"/>
+		    <param name="WeaponStabAttMod" desc="" type="float"/>
+		    <param name="WeaponSlashAttMod" desc="" type="float"/>
+  		  <param name="WeaponSmashAttMod" desc="" type="float"/>
+        <param name="entityId" desc="Id of entity - player or horse or..." type="int"/>
+      </function>
+
+      <function name="SetInventoryStat" funcname="fc_setInventoryStat">
+          <param name="EntityId" desc="Id of entity" type="int"/>
+          <param name="Stat" desc="" type="string"/>
+          <param name="Value" desc="Current" type="float"/>
+        </function>
+
+	  <function name="InitInventory" funcname="fc_initInventory">
+        <param name="ModeId" desc="Index of inventory mode" type="int"/>
+		<param name="InventoryId" desc="Player's runtime inventory id." type="wuid"/>
+		<param name="SelectedId" desc="Second runtime inventory ID. Differs according modeidx." type="wuid"/>
+		<param name="PreselectedItemId" desc="Id of item which should be preselected." type="wuid"/>
+	  <param name="InputId" desc="UI input for help bar" type="int"/>
+    <param name="PlayerId" desc="Index of player" type="int"/>
+    <param name="PlayerDummyId" desc="Index of player's dummy" type="int"/>
+    <param name="OtherId" desc="Index of horse entity" type="int"/>
+    <param name="OtherDummyId" desc="Index of horse entity's dummy" type="int"/>
+    <param name="DogId" desc="Index of dog entity" type="int"/>
+
+      </function>
+
+    <function name="SetHelpBarButtons" funcname="fc_setHelpBarButtons">
+      <param name="Controls" desc="Array of split actual controllers which was needed in helpbar" type="string" />
+      <param name="Actions" desc="Array of split original ui actions" type="string" />
+      <param name="QueryId" desc="ido of query" type="string"/>
+    </function>
+
+	  <function name="FillQuestInfo" funcname="fc_fillQuestInfo">
+        <param name="Name" desc="Name of the quest" type="string"/>
+		<param name="UIName" desc="UI Name of the quest" type="string"/>
+		<param name="Type" desc="Type of the quest" type="int"/>
+		<param name="State" desc="State of the quest" type="int"/>
+		<param name="Index" desc="Index of the quest" type="int"/>
+		<param name="Tracking" desc="Tracking of the quest is enum 0 not tracking and number for color id" type="int"/>
+		<param name="OnMap" desc="Tracking on current map" type="bool"/>
+		<param name="Read" desc="Read or not" type="bool"/>
+		<param name="RepeatCnt" desc="How many times has been quest repeated, default 0" type="int"/>
+      </function>
+
+	  <function name="FillQuestInfoEx" funcname="fc_fillQuestInfoEx" dynamic="1">
+        <param name="QuestName" desc="Name of the quest" type="string"/>
+      </function>
+
+	  <function name="FillQuestDiary" funcname="fc_fillQuestDiary" dynamic="1">
+        <param name="QuestName" desc="Name of the quest" type="string"/>
+      </function>
+
+    <function name="SetQuestDeliveryText" funcname="fc_setQuestDeliveryText" dynamic="1">
+        <param name="array" desc="in format name|current count|required count" type="string"/>
+      </function>
+
+	  <function name="SetShopProperties" funcname="fc_setShopProperties">
+	  	  <param name="ShopId" desc="Id of shop." type="wuid"/>
+        <param name="Reputation" desc="Reputation" type="float"/>
+        <param name="Bonus" desc="Bonus when selling" type="float"/>
+		    <param name="Discount" desc="Discount when buying" type="float"/>
+        <param name="CanHaggle" desc="Can haggle" type="bool"/>
+		    <param name="BasketInventoryId" desc="Id of basket inventory." type="wuid"/>
+      </function>
+
+      <!-- FUNCTION FOR MAP-->
+
+      <function name="SetPlayerPositionInMap"  funcname="fc_setPlayerPositionInMap">
+        <param name="XPos" desc="x position" type="float"/>
+        <param name="YPos" desc="y position" type="float"/>
+        <param name="ZPos" desc="z position" type="float"/>
+        <param name="Azimuth" desc="clockwise angle from north" type="float"/>
+      </function>
+
+      <function name="SetPlayerOnFastTravelPath"  funcname="fc_setPlayerOnFastTravelPath">
+        <param name="distance" desc="distance which left to end of path" type="float"/>
+        <param name="point" desc="num of navmash points which left to end of path" type="int"/>
+      </function>
+
+      <function name="SetCheckpointInMap"  funcname="fc_addCheckpoint">
+        <param name="XPos" desc="x position" type="float"/>
+        <param name="YPos" desc="y position" type="float"/>
+        <param name="ZPos" desc="z position" type="float"/>
+      </function>
+
+      <function name="RemoveCheckpointInMap"  funcname="fc_removeCheckpoint" />
+
+      <function name="SetMarkInMap"  funcname="fc_addMark"> <!-- deprecated -->
+        <param name="markId" desc="unique id of mark" type="int"/>
+        <param name="iconId" desc="id of icon mean frame of mc and type of mark" type="int"/>
+        <param name="XPos" desc="x position" type="float"/>
+        <param name="YPos" desc="y position" type="float"/>
+        <param name="ZPos" desc="z position" type="float"/>
+      </function>
+
+      <function name="SetMarkInMapAll"  funcname="fc_addMarkAll" />
+
+      <function name="RemoveMarkInMap"  funcname="fc_removeMark">
+        <param name="markId" desc="unique id of mark" type="int"/>
+      </function>
+
+      <function name="ShowMarksTypeInMap"  funcname="fc_showMarks">
+        <param name="iconId" desc="id of icon mean frame of mc and type of mark" type="int"/>
+      </function>
+
+      <function name="HideMarksTypeInMap"  funcname="fc_hideMarks">
+        <param name="iconId" desc="id of icon mean frame of mc and type of mark" type="int"/>
+      </function>
+
+      <function name="AddFastTravelPoint" funcname="fc_addFastTravelPoint"> <!-- deprecated -->
+        <param name="Name" desc="Name" type="string"/>
+        <param name="UIName" desc="UIName" type="string"/>
+        <param name="xPos" desc="x coodinates of point" type="float"/>
+        <param name="yPos" desc="y coodinates of point" type="float"/>
+        <param name="zPos" desc="z coodinates of point" type="float"/>
+      </function>
+
+      <function name="AddFastTravelPointAll" funcname="fc_addFastTravelPointAll" />
+
+      <function name="RemoveFastTravelPoint"  funcname="fc_removeFastTravelPoint">
+        <param name="markId" desc="unique id of mark" type="int"/>
+      </function>
+
+      <function name="DrawFastTravelPath" funcname="fc_drawFastTravelPath">
+        <param name="xPos" desc="x coordinates of points on path split by |" type="string"/>
+        <param name="yPos" desc="y coordinates of points on path split by |" type="string"/>
+      </function>
+
+      <function name="ForceFastTravel" funcname="fc_forceFastTravel">
+        <param name="Name" desc="Name" type="string"/>
+        <param name="xPos" desc="x coodinates of point" type="float"/>
+        <param name="yPos" desc="y coodinates of point" type="float"/>
+        <param name="zPos" desc="z coodinates of point" type="float"/>
+        <param name="EntityId" desc="wtf" type="int"/>
+        <param name="PlayerIconId" desc="enum class E_FTIconType" type="int"/>
+      </function>
+
+      <function name="SetQuestFlagInMap"  funcname="fc_addQuestFlag">
+        <param name="flagId" desc="unique id of flag resp. objective" type="int"/>
+        <param name="questId" desc="id of quest" type="string"/>
+        <param name="XPos" desc="x position, if only one number then point else area" type="string"/>
+        <param name="YPos" desc="y position, if only one number then point else area" type="string"/>
+        <param name="ZPos" desc="z position" type="string"/>
+        <param name="type" desc="mark type" type="int"/>
+        <param name="objectiveId" desc="objective id char" type="int"/>
+      </function>
+
+      <function name="RemoveQuestFlagInMap"  funcname="fc_removeQuestFlag">
+        <param name="flagId" desc="unique id of flag resp. objective" type="int"/>
+      </function>
+
+      <function name="ShowQuestFlagsInMap"  funcname="fc_showQuestFlags">
+        <param name="questId" desc="id of quest" type="int"/>
+      </function>
+
+      <function name="HideQuestFlagsInMap"  funcname="fc_hideQuestFlags">
+        <param name="questId" desc="id of quest" type="int"/>
+      </function>
+
+      <function name="SetFogOfWar"  funcname="fc_setFogOfWar">
+        <param name="flags" desc="flags of clouds" type="string"/>
+      </function>
+
+      <function name="ShowCloud"  funcname="fc_showCloud">
+        <param name="groupIndex" desc="0=large clouds,1=small clouds, 2=angels" type="int"/>
+        <param name="index" desc="index of cloud in group" type="int"/>
+      </function>
+
+      <function name="HideCloud"  funcname="fc_hideCloud">
+        <param name="groupIndex" desc="0=large clouds,1=small clouds, 2=angels" type="int"/>
+        <param name="index" desc="index of cloud in group" type="int"/>
+      </function>
+
+      <function name="AddLocalMap" funcname="fc_addLocalMap">
+		    <param name="Name" desc="Map name" type="string"/>
+		    <param name="mapX" desc="Map X poition in game coord." type="float"/>
+		    <param name="mapY" desc="Map Y position in game coord." type="float"/>
+        <param name="mapWidth" desc="Map width in game coord." type="float"/>
+        <param name="mapHeight" desc="Map height in game coord." type="float"/>
+        <param name="focus1X" desc="Focus 1 of elipse - active area in game coord." type="float"/>
+        <param name="focus1Y" desc="Focus 1 of elipse - active area in game coord." type="float"/>
+        <param name="focus2X" desc="Focus 2 of elipse - active area in game coord." type="float"/>
+        <param name="focus2Y" desc="Focus 2 of elipse - active area in game coord." type="float"/>
+        <param name="dist" desc="sum of distance from border elipse to focuses in game coord." type="float"/>
+      </function>
+
+      <function name="AddReputation" funcname="fc_addReputation">
+        <param name="Name" desc="Name of location" type="string"/>
+        <param name="IconId" desc="id of icon" type="int"/>
+        <param name="uiName" desc="ui name of location" type="string"/>
+        <param name="uiInfo" desc="ui decription" type="string"/>
+        <param name="wanted" desc="state 0,1,2,3" type="int"/>
+        <param name="reputation" desc="in interval 0..1" type="float"/>
+        <param name="labelX" desc="x position in game coord. " type="float"/>
+        <param name="labelY" desc="y position in game coord. " type="float"/>
+        <param name="subClass" desc="name of parent" type="string"/>
+      </function>
+
+      <function name="SetStatisticsCategory" funcname="fc_setStatisticsCategory">
+         <param name="Data" desc="in format name|uiIcon|uiName" type="string"/>
+      </function>
+      <function name="SetStatistics" funcname="fc_setStatistics">
+        <param name="Data" desc="in format name|categoryName|uiName|uiInfo|value|maxValue|type|unit" type="string"/>
+     </function>
+
+      <!-- random event in fast travel -->
+      <function name="AddRandomEvent" funcname="fc_addRandomEvent">
+        <param name="id" desc="id of event" type="int"/>
+        <param name="type" desc="type of event" type="int"/>
+        <param name="xPos" desc="x coordinate of event" type="float"/>
+        <param name="yPos" desc="y coordinate of event" type="float"/>
+        <param name="zPos" desc="z coordinate of event" type="float"/>
+        <param name="title" desc="description of event" type="string"/>
+        <param name="optionId" desc="array of id of options" type="string"/>
+        <param name="text" desc="array of texts in option" type="string"/>
+		    <param name="chances" desc="array of chances% in option" type="string"/>
+        <param name="description" desc="description" type="string"/>
+      </function>
+
+      <function name="RemoveRandomEvent" funcname="fc_removeRandomEvent">
+        <param name="id" desc="id of event" type="int"/>
+      </function>
+
+      <function name="UpdateEventTimeout" funcname="fc_updateEventTimeout">
+        <param name="percent" desc="from 1 to 0 how much left" type="float"/>
+      </function>
+
+      <function name="ShowRandomEventOption" funcname="fc_showRandomEventOption">
+        <param name="id" desc="id of event" type="int"/>
+      </function>
+
+      <function name="HideRandomEventOption" funcname="fc_hideRandomEventOption">
+        <param name="id" desc="id of event" type="int"/>
+      </function>
+
+      <function name="RandomEventResult" funcname="fc_randomEventResult">
+        <param name="id" desc="id of event" type="int"/>
+        <param name="message" desc="message of result" type="string"/>
+      </function>
+
+      <function name="FastTravelFinish" funcname="fc_fastTravelFinish"/>
+
+      <function name="SetTime" funcname="fc_setTime">
+		    <param name="Time" desc="Time" type="float"/>
+      </function>
+
+	  <function name="SetInventoryTab" funcname="fc_setInventoryTab">
+		<param name="TabId" desc="TabId" type="int"/>
+		<param name="IsLast" desc="IsLast" type="bool"/>
+      </function>
+
+    <function name="SetCharacterLoaded" funcname="fc_setCharacterLoaded"/>
+
+      <function name="AddMapItem" funcname="fc_addMapItem">
+		<param name="Name" desc="Name" type="string"/>
+		<param name="UIName" desc="UIName" type="string"/>
+		<param name="Type" desc="Type" type="int"/>
+    	<param name="Order" desc="Order" type="int"/>
+      </function>
+
+
+      <function name="SetMapItemTracking" funcname="fc_setMapItemTracking">
+        <param name="Type" desc="Type" type="int"/>
+        <param name="Visible" desc="true if mark is tracking" type="bool"/>
+      </function>
+
+	  <function name="ShowInfoDialog" funcname="fc_showInfoDialog">
+		<param name="Msg" desc="Msg" type="string"/>
+      </function>
+
+	  <function name="ResultFastTravel" funcname="fc_resultFastTravel">
+		  <param name="Result" desc="true if it is possible to travel on this place" type="bool"/>
+      <param name="Message" desc="reason why can not fast travel, empty otherwise" type="string"/>
+    </function>
+
+	<!-- Buff -->
+	<function name="OnBuffAdded" funcname="fc_addBuff">
+		<param name="BuffId" desc="unique name of buff" type="string" />
+		<param name="IconId" desc="number of key frame with buff" type="int"/>
+    <param name="Type" desc="buff/debuff/bleeding" type="int"/>
+    <param name="Order" desc="less then zero is left, greater is right" type ="int"/>
+    <param name="uiName" desc="name" type="string"/>
+    <param name="uiInfo" desc="description" type="string"/>
+    <param name="Visibility" desc="buff show only in inventory" type="int"/>
+	</function>
+
+	<function name="OnBuffUpdated" funcname="fc_updateBuff">
+		<param name="BuffId" desc="unique name of buff" type="string" />
+		<param name="Progress" desc="from 0 to 1" type="float"/>
+    <param name="SecondProgress" desc="two state" type="int"/>
+	</function>
+
+	<function name="OnBuffRemoved" funcname="fc_removeBuff">
+		<param name="BuffId" desc="unique name of buff" type="string" />
+	</function>
+
+  <function name="OnSwapBuffId" funcname="fc_swapBuffId">
+    <param name="OldBuffId" desc="previous unique name of buff" type="string" />
+    <param name="NewBuffId" desc="new unique name of buff" type="string" />
+  </function>
+
+      <function name="SetSkills" funcname="fc_setSkills" desc="all data is in m_FG_PlayerSkills in format skillName,group,baseLevel,buffedLevel,maximum,levelProgressRel,totalXP,nextLevelXP,uiName,uiInfo,perkPoints">
+        <param name="entityId" desc="Id of entity - player" type="int"/>
+      </function>
+
+      <function name="SetSkillPerks" funcname="fc_setSkillPerks" desc="all data is in m_FG_PlayerSkillPerks in format perkGuid,group,parentName,state,iconId,uiName,uiInfo">
+        <param name="entityId" desc="Id of entity - player" type="int"/>
+      </function>
+
+      <function name="SetSoulValues" funcname="fc_setSoulValues" desc="all data is in m_FG_PlayerStats in format skillName,group,baseLevel,buffedLevel,maximum,levelProgressRel,totalXP,nextLevelXP,uiName,uiInfo,perkPoints">
+        <param name="entityId" desc="Id of entity - player" type="int"/>
+      </function>
+
+      <function name="SetStatPerks" funcname="fc_setStatPerks" desc="all data is in m_FG_PlayerStatPerks in format perkGuid,group,parentName,state,iconId,uiName,uiInfo">
+        <param name="entityId" desc="Id of entity - player" type="int"/>
+      </function>
+
+      <function name="SetSoulName" funcname="fc_setSoulName" desc="">
+        <param name="entityId" desc="Id of entity - horse" type="int"/>
+        <param name="uiName" desc="" type="string"/>
+      </function>
+
+      <function name="SetDogMode" funcname="fc_setDogMode" desc="">
+        <param name="uiMode" desc="" type="string"/>
+      </function>
+
+      <!-- This two functions is call directly from code -->
+      <function name="OnPerkPointsReceived" funcname="OnPerkPointsReceived">
+        <param name="Group" desc="group skill/stat/state" type="string"/>
+        <param name="NameParent" desc="Name of the Skill/Stat/State/DerivedStat" type="string"/>
+        <param name="points" desc="Perkpoints of the Skill/Stat/State/DerivedStat" type="int"/>
+      </function>
+
+      <function name="OnLearnPerkResult" funcname="OnLearnPerkResult">
+        <param name="NameGuid" desc="Guid of perk" type="string"/>
+        <param name="result" desc="result if learned succesed" type="bool"/>
+      </function>
+
+      <function name="SetBleedingData" funcname="fc_setBleedingData">
+        <param name="BleedingData" desc="sequence for each bodypart" type="string"/>
+      </function>
+
+      <function name="SetOintmentEffect" funcname="fc_setOintmentEffect">
+        <param name="ItemId" desc="id of item" type="string"/>
+        <param name="BodyPartId" desc="id of body part" type="int"/>
+        <param name="Amount" desc="how much bandage" type="int"/>
+        <param name="HealedBleeding" desc="from 0 to 1" type="float"/>
+        <param name="FullHealAmount" desc="how much bandage is needed for stop bleeding" type="int"/>
+      </function>
+
+      <function name="SendItemCombinations" funcname="fc_setApplyDialog">
+        <param name="sourceInv" desc="" type="string"/>
+        <param name="sourceItemId" desc="" type="string"/>
+      </function>
+
+      <function name="OnCombineItemsResult" funcname="fc_combineItemsResult">
+        <param name="targetItemId" desc="" type="string"/>
+      </function>
+
+      <function name="AddCodexRecords" funcname="fc_addCodexRecords">
+        <param name="data" desc="in format name|uiName|parentName|category|layout|contentText|contentImage" type="string"/>
+      </function>
+
+      <function name="SetCodexTotalCount" funcname="fc_setCodexTotalCount">
+        <param name="CategoryId" desc="0-5 enum" type="int"/>
+        <param name="Total" desc="how many records category has" type="int"/>
+      </function>
+
+      <function name="FocusOnCodexRecord" funcname="fc_focusOnCodexRecord">
+        <param name="RecordId" desc="guid id" type="string"/>
+      </function>
+
+   </functions>
+
+    <events>
+      <event name="GetInventoryItems" fscommand="GetInventoryItems" desc="Requests inventory item list">
+		<param name="InventoryId" desc="Index of requested inventory" type="wuid"/>
+      </event>
+
+      <event name="OnDropItem" fscommand="onItemDrop" desc="Attemp to drop item from inventory">
+		<param name="ItemId" desc="Item id from selected inventory." type="wuid"/>
+		<param name="Count" desc="Count of items to be removed." type="int"/>
+      </event>
+
+      <event name="OnUseItem" fscommand="onItemUse" desc="Attemp to use item from inventory">
+		<param name="InventoryId" desc="Index of requested inventory" type="wuid"/>
+		<param name="ItemId" desc="Item id from selected inventory." type="wuid"/>
+    <param name="Amount" desc="How many." type="int"/>
+    <param name="BodyPartId" desc="On which body part should use." type="int"/>
+      </event>
+
+	  <event name="ShoppingCheckout" fscommand="shoppingCheckout" desc="Checkout shopping">
+		<param name="PlayerId" desc="Index of player's inventory" type="wuid"/>
+		<param name="ShopId" desc="Id of shop" type="wuid"/>
+		<param name="Bargain" desc="Bargain or just checkout" type="bool"/>
+      </event>
+
+    <event name="QuestDeliveryCheckout" fscommand="questDeliveryCheckout" desc="Checkout shopping"/>
+
+	  <event name="OnItemBetweenBasket" fscommand="onItemBetweenBasket" desc="Put item to/from shopping basket.">
+		<param name="FromId" desc="Index of inventory from which moving item" type="wuid"/>
+		<param name="ToId" desc="Index of inventory to which movint item" type="wuid"/>
+		<param name="ItemId" desc="ItemId" type="wuid"/>
+		<param name="Count" desc="Count" type="int"/>
+      </event>
+
+	   <event name="OnItemMove" fscommand="onItemMove" desc="Move item from player to selected inventory.">
+		<param name="FromId" desc="Remove item from this inventory" type="wuid"/>
+		<param name="ToId" desc="Add item to this inventory" type="wuid"/>
+		<param name="ItemId" desc="ItemId" type="wuid"/>
+		<param name="Count" desc="Count" type="int"/>
+      </event>
+
+    <event name="RequestItemInfoAll" fscommand="requestItemInfoAll" desc="Request item description">
+        <param name="InventoryId" desc="Index of requested inventory" type="wuid"/>
+        <param name="ItemsId" desc="" type="wuid"/>
+    </event>
+
+      <event name="RequestItemInfoExAll" fscommand="requestItemInfoExAll" desc="Request extended item description">
+        <param name="InventoryId" desc="Index of requested inventory" type="wuid"/>
+        <param name="ItemsId" desc="" type="wuid"/>
+      </event>
+
+      <event name="WatchPlayerCapacity" fscommand="watchPlayerCapacity" desc="Request capacity and weight of entity">
+    		<param name="EntityId" desc="Id of entity" type="int" />
+        <param name="Enabled" desc="start or end watching" type="bool" />
+      </event>
+
+      <event name="WatchHorseCapacity" fscommand="watchHorseCapacity" desc="Request capacity and weight of entity">
+    		<param name="EntityId" desc="Id of entity" type="int" />
+        <param name="Enabled" desc="start or end watching" type="bool" />
+      </event>
+
+	   <event name="WatchInventory" fscommand="watchInventory" desc="Notigy game that wa want to listen inventory changes">
+		<param name="InventoryId" desc="Index of requested inventory" type="wuid" />
+		<param name="Enabled" desc="On/Off watching" type="bool" />
+      </event>
+
+	  <event name="RequestQuests" fscommand="requestQuests" desc="Request player's quests">
+      </event>
+
+	  <event name="RequestQuestInfoEx" fscommand="requestQuestInfoEx" desc="Request quest info">
+		<param name="QuestName" desc="Name of the quest" type="string"/>
+      </event>
+
+	  <event name="RequestQuestDiary" fscommand="requestQuestDiary" desc="Request quest diary text">
+		<param name="QuestName" desc="Name of the quest" type="string"/>
+      </event>
+
+	  <event name="TrackQuest" fscommand="trackQuest" desc="Request tracking quest objective on map and on compass">
+		<param name="QuestName" desc="Name of the quest" type="string"/>
+		<param name="StartTracking" desc="Tracking id" type="int"/>
+      </event>
+
+	  <event name="SetQuestRead" fscommand="setQuestRead" desc="Set quest was read">
+		<param name="QuestName" desc="Name of the quest" type="string"/>
+		<param name="Read" desc="True if quest was read" type="bool"/>
+      </event>
+
+      <event name="openFullscreenMap" fscommand="openFullscreenMap" desc="open map on fullscreen" />
+
+      <event name="closeFullscreenMap" fscommand="closeFullscreenMap" desc="close fullscreen of map" />
+
+      <event name="OnMapPlayerPosition" fscommand="OnMapPlayerPosition" desc="give me position of player" />
+
+      <event name="OnMapMarksPosition" fscommand="OnMapMarksPosition" desc="give me positions of marks one by one" />
+
+
+      <event name="OnCheckpointAdd" fscommand="OnCheckpointAdd" desc="player add checkpoint in map" >
+        <param name="XPos" desc="x position" type="float"/>
+        <param name="YPos" desc="y position" type="float"/>
+      </event>
+
+      <event name="OnCheckpointRemove" fscommand="OnCheckpointRemove" desc="player remove checkpoint in map" />
+
+      <event name="OnMapChangeMarksVisible" fscommand="OnMapChangeMarksVisible" desc="player show/hide some type of marks in map legend" >
+        <param name="Type" desc="enum of  mark" type="int"/>
+        <param name="Visible" desc="true for visible false for hide" type="bool"/>
+      </event>
+
+      <event name="OnMapChangeQuestFlagVisible" fscommand="OnMapChangeQuestFlagVisible" desc="player show/hide some quest on map" >
+        <param name="QuestId" desc="id of Quest" type="int"/>
+        <param name="Visible" desc="true for visible false for hide" type="bool"/>
+      </event>
+
+	  <event name="TryItem" fscommand="tryItem" desc="Try equip item on dummy player">
+		<param name="Equip" desc="Equip or unequip" type="bool"/>
+    <param name="Preview" desc="Preview or unpreview" type="bool"/>
+		<param name="ItemId" desc="Item id from selected inventory." type="wuid"/>
+      </event>
+
+	   <event name="SetInventoryTab" fscommand="setInventoryTab" desc="Set Inventory Tab">
+		<param name="TabId" desc="Tab id" type="int"/>
+      </event>
+
+    <event name="OnHelpBarButtonSet" fscommand="onHelpBarButtonSet" desc="Want to translate buttons name">
+      <param name="ButtonCodeArr" desc="array split by vertical bar" type="string"/>
+      <param name="QueryId" desc="ido of query" type="string"/>
+    </event>
+
+	  <event name="ShowCharacter" fscommand="showCharacter" desc="Show character">
+		<param name="Show" desc="True to show/false to hide" type="bool"/>
+		<param name="IsHorse" desc="True to show horse" type="bool"/>
+      </event>
+
+	  <event name="OnSound" fscommand="OnSound" desc="Plays sound event">
+		<param name="Event" desc="Sound event name" type="string"/>
+      </event>
+
+	  <event name="RequestFastTravel" fscommand="requestFastTravel" desc="Request fast travel to previous set location" />
+
+    <event name="OnFastTravelPath" fscommand="OnFastTravelPath" desc="Request path of fast travel">
+      <param name="xPos" desc="x coordinates of the location" type="float"/>
+      <param name="yPos" desc="y coordinates of the location" type="float"/>
+      <param name="zPos" desc="z coordinates of the location" type="float"/>
+    </event>
+
+      <event name="OnOptionRandomEventSelect" fscommand="onOptionRandomEventSelect" desc="some of option of random event was selected">
+        <param name="eventId" desc="id of event" type="int"/>
+        <param name="optionId" desc="id of option" type="int"/>
+      </event>
+
+
+      <event name="RequestShowSkipTime" fscommand="requestSkipTime" desc="Request showing skip time dialog">
+      </event>
+
+
+      <event name="RequestWeaponStats" fscommand="requestWeaponStats" desc="Request weapon stats">
+        <param name="entityId" desc="Id of entity - player or horse or..." type="int"/>
+        <param name="weaponId" desc="Id of weapon" type="int"/>
+        <param name="onlyBase" desc="" type="bool"/>
+      </event>
+
+      <event name="RequestArmortStats" fscommand="requestArmortStats" desc="Request armor stats">
+        <param name="entityId" desc="Id of entity - player or horse or..." type="int"/>
+        <param name="onlyBase" desc="" type="bool"/>
+      </event>
+
+      <event name="RequestSkills" fscommand="requestSkills" desc="">
+        <param name="entityId" desc="Id of entity - player or horse or..." type="int"/>
+      </event>
+
+      <event name="RequestSkillPerks" fscommand="requestSkillPerks" desc="">
+        <param name="entityId" desc="Id of entity - player or horse or..." type="int"/>
+      </event>
+
+      <event name="RequestSoulValues" fscommand="requestSoulValues" desc="">
+        <param name="entityId" desc="Id of entity - player or horse or..." type="int"/>
+        <param name="values" desc="" type="string"/>
+      </event>
+
+      <event name="RequestSoulCaw" fscommand="requestSoulCaw" desc="">
+        <param name="entityId" desc="Id of entity - player or horse or..." type="int"/>
+      </event>
+
+      <event name="RequestStatPerks" fscommand="requestStatPerks" desc="">
+        <param name="entityId" desc="Id of entity - player or horse or..." type="int"/>
+      </event>
+
+      <event name="RequestDogMode" fscommand="requestDogMode" desc="">
+        <param name="entityId" desc="Id of dog entity" type="int"/>
+      </event>
+
+      <event name="GetReputations" fscommand="getReputations" desc="Request reputations" />
+
+      <event name="GetStatisticsCategory" fscommand="getStatisticsCategory" desc="Request statistics category" />
+      <event name="GetStatistics" fscommand="getStatistics" desc="Request statistics" />
+
+      <event name="GetCodexRecords" fscommand="getCodexRecords" desc="Request codex records" />
+
+      <event name="OnChangeCodexReadState" fscommand="onChangeCodexReadState" desc="Set codex record was read">
+        <param name="Id" desc="id of record" type="string"/>
+        <param name="State" desc="true is fresh, false mean it was read" type="bool"/>
+      </event>
+
+      <event name="RequestLearnPerk" fscommand="requestLearnPerk" desc="Request which perk should be learned">
+        <param name="perkGuid" desc="" type="string"/>
+      </event>
+
+       <event name="OnDialog" fscommand="onDialog" desc="Event after dialog opening">
+      	<param name="Show" desc="true if dialog has been shown" type="bool"/>
+      </event>
+
+      <event name="SetTime" fscommand="setTime" desc="Request setting time" />
+
+      <event name="RquestBleedingData" fscommand="requestBleedingData" desc="Request bodypart for first aid" />
+
+      <event name="RequestOintmentEffect" fscommand="requestOintmentEffect" desc="Request for first aid">
+        <param name="ItemId" desc="id of item" type="string"/>
+        <param name="BodyPartId" desc="id of body part" type="int"/>
+        <param name="Amount" desc="how much of bandage" type="int"/>
+      </event>
+
+      <event name="GetCombinableItems" fscommand="GetCombinableItems" desc="get combine items">
+        <param name="sourceInv" desc="" type="string"/>
+        <param name="sourceItemId" desc="" type="string"/>
+        <param name="targetInv" desc="" type="string"/>
+      </event>
+
+      <event name="CombineItems" fscommand="CombineItems" desc="combine items">
+        <param name="sourceInv" desc="" type="string"/>
+        <param name="sourceItemId" desc="" type="string"/>
+        <param name="targetInv" desc="" type="string"/>
+        <param name="targetItemId" desc="" type="string"/>
+      </event>
+
+      <event name="InventoryStartClosing" fscommand="inventoryStartClosing" desc="when inventory start playing close animation" />
+
+    </events>
+
+	<arrays>
+      <array name="items" varname="m_FG_ItemArray" />
+	  <array name="itemInfo" varname="m_FG_ItemInfo" />
+	  <array name="itemInfoEx" varname="m_FG_ItemInfoEx" />
+	  <array name="questInfoEx" varname="m_FG_QuestInfoEx" />
+	  <array name="questDiary" varname="m_FG_QuestDiary" />
+	  <array name="areaShape" varname="m_FG_AreaShape" />
+    <array name="playerSkills" varname="m_FG_PlayerSkills" />
+    <array name="playerSkillPerks" varname="m_FG_PlayerSkillPerks" />
+    <array name="soulValues" varname="m_FG_SoulValues" />
+    <array name="playerStatPerks" varname="m_FG_PlayerStatPerks" />
+
+    <array name="mapMarkers" varname="m_FG_MapMarkers" />
+    <array name="fastTravelPoints" varname="m_FG_FastTravelPoints" />
+    </arrays>
+
+	<variables>
+		<variable name="InventoryTab" varname="m_SelectedTab"/>
+    <variable name="ClosingCounter" varname="m_ClosingCounter"/>
+	</variables>
+
+	<MovieClips>
+		<MovieClip name="InventoryScreen" instancename="mc_InventoryAnim" />
+		<MovieClip name="CharacterScreen" instancename="mc_CharacterAnim.mc_character" />
+		<MovieClip name="Time" instancename="mc_CharacterAnim.mc_character.mc_Time.Time" />
+		<MovieClip name="CharacterAnchor" instancename="mc_characterAnchor" />
+	</MovieClips>
+
+  </UIElement>
+
+</UIElements>

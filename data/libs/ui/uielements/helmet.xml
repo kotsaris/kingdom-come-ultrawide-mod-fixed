@@ -1,0 +1,53 @@
+<UIElements name="Common">
+
+  <UIElement name="Helmet" >
+
+    <GFx file="helmet.gfx" layer="5">
+      <Constraints>
+        <Align mode="dynamic" valign="center" halign="center" scale="0" max="0" />
+      </Constraints>
+    </GFx>
+
+    <functions>
+
+      <function name="AddOverlay" funcname="fc_addOverlay">
+        <param name="layer" desc="" type="int"/>
+        <param name="type" desc="" type="int"/>
+        <param name="animation" desc="" type="bool"/>
+        <param name="alpha" desc="" type="float"/>
+      </function>
+
+      <function name="SetAngle" funcname="fc_setAngle">
+        <param name="x" desc="" type="float"/>
+        <param name="y" desc="" type="float"/>
+        <param name="z" desc="" type="float"/>
+      </function>
+
+      <function name="RemoveAllOverlays" funcname="fc_removeAllOverlays"/>
+
+      <function name="RemoveOverlay" funcname="fc_removeOverlay">
+        <param name="layer" desc="" type="int"/>
+      </function>
+
+      <function name="ShowOverlays" funcname="fc_showOverlays">
+        <param name="animation" desc="if overlay should play animation" type="bool"/>
+      </function>
+
+      <function name="HideOverlays" funcname="fc_hideOverlays">
+        <param name="animation" desc="if overlay should play animation" type="bool"/>
+      </function>
+
+    </functions>
+
+    <events>
+      <event name="AllRemoved" fscommand="allRemoved" desc="All overlays were removed"/>
+
+      <!-- sounds-->
+      <event name="OnSound" fscommand="onSound" desc="">
+          <param name="soundName" desc=""  type="string" />
+      </event>
+    </events>
+
+  </UIElement>
+
+</UIElements>

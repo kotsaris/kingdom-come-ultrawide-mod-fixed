@@ -1,0 +1,38 @@
+<UIElements name="Menus">
+
+  <UIElement name="GameOver" keyevents="1" controller_input="1">
+
+    <GFx file="GameOver.gfx" layer="40">
+      <Constraints>
+        <Align mode="dynamic" valign="bottom" halign="center" scale="0" max="0" />
+      </Constraints>
+    </GFx>
+
+    <functions>
+      <function name="HidePicture" funcname="fc_hidePicture"/>
+
+      <function name="SetMessage" funcname="fc_setMessage">
+        <param name="message" desc="" type="string"/>
+      </function>
+
+      <function name="SetType" funcname="fc_setType">
+        <param name="type" desc="id=0 is game over, id=1 is game finished" type="int"/>
+      </function>
+
+      <function name="SetHelpBarButtons" funcname="fc_setHelpBarButtons">
+        <param name="Controls" desc="Array of split actual controllers which was needed in helpbar" type="string" />
+      </function>
+
+    </functions>
+
+    <events>
+      <event name="OnHelpBarButtonSet" fscommand="onHelpBarButtonSet" desc="Want to translate buttons name">
+        <param name="ButtonCodeArr" desc="array split by vertical bar" type="string"/>
+      </event>
+
+      <event name="OnPictureShown" fscommand="onPictureShown" desc="Want to translate buttons name"/>
+    </events>
+
+  </UIElement>
+
+</UIElements>

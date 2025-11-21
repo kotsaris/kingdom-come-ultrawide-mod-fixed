@@ -1,0 +1,23 @@
+<UIElements name="Common">
+
+  <UIElement name="Progress" >
+
+    <GFx file="progress.gfx" layer="80">
+      <Constraints>
+        <!--<Align mode="dynamic" valign="center" halign="center" scale="1" />-->
+        <Align mode="dynamic" valign="center" halign="center" scale="0" max="0" />
+      </Constraints>
+    </GFx>
+
+    <functions>
+      <function name="SetProgress" funcname="fc_setProgress">
+        <param name="percent" desc="" type="float" />
+      </function>
+      <function name="SetDebug" funcname="fc_setDebug">
+        <param name="debug" desc="" type="string" />
+      </function>
+    </functions>
+
+  </UIElement>
+
+</UIElements>

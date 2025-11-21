@@ -1,0 +1,454 @@
+<UIElements name="Menus">
+
+  <UIElement name="hud" render_lockless="0">
+
+    <GFx file="hud.gfx" layer="25">
+      <Constraints>
+			<Align mode="dynamic" valign="center" halign="center" scale="0" max="0" />
+      </Constraints>
+    </GFx>
+
+    <functions>
+
+      <function name="SetGameMode" funcname="fc_setGameMode">
+        <param name="Mode" desc="" type="int" />
+      </function>
+
+      <function name="SetGameDude" funcname="fc_setGameDude">
+        <param name="Dude" desc="" type="int" />
+      </function>
+
+      <function name="SetInputId" funcname="fc_setInputId">
+        <param name="InputId" desc="1 keyboard, 2 xbox, 4 ps" type="int" />
+      </function>
+
+      <!-- Reset all -->
+      <function name="ResetAll" funcname="fc_resetAll" />
+
+		<!-- Event Log -->
+		<function name="LogMessage" funcname="fc_logMessage">
+			<param name="Message" desc="Message that should be logged" type="string" />
+		</function>
+
+    <!-- Item hint-->
+		<function name="SetItemHint" funcname="fc_setItemHint">
+			<param name="Name" desc="Item name in case of picking" type="string" />
+		</function>
+
+    <!-- Action hints -->
+		<function name="ShowActionHint" funcname="fc_showActionHint">
+			<param name="ActionId" desc="Action type to show" type="int" />
+			<param name="Control" desc="Input control for this type" type="string" />
+			<param name="Text" desc="Hint textId for this action" type="string" />
+			<param name="Type" desc="Type of control (0 press, 1 hold)" type="int" />
+			<param name="Name" desc="Name of NPC which I talk with" type="string" />
+		</function>
+
+		<function name="HideActionHint" funcname="fc_hideActionHint">
+			<param name="ActionId" desc="Action type to hide" type="int" />
+		</function>
+
+    <function name="ShowNpcName" funcname="fc_showNpcName">
+			<param name="Name" desc="name of npc" type="string" />
+		</function>
+
+    <function name="HideNpcName" funcname="fc_hideNpcName"/>
+
+    <function name="ResetActionsHints" funcname="fc_resetActionsHints" />
+
+		<!-- Compass -->
+		<function name="AddCompassMark" funcname="fc_addCompassMark">
+			<param name="MarkID" desc="ID of the mark" type="int"/>
+			<param name="MarkType" desc="Type enum of the mark" type="int"/>
+			<param name="QuestColor" desc="Id of tracking color" type="int"/>
+      <param name="ObjectiveNumber" desc="id of objective" type="int"/>
+			<param name="Distance" desc="Distance to player in meters" type="float"/>
+			<param name="Angle" desc="Angle of the mark" type="float"/>
+      <param name="NearThreshold" desc="Distance of maximum alpha" type="float"/>
+      <param name="FarThreshold" desc="Distance of minimum alpha" type="float"/>
+		</function>
+
+		<function name="RemoveCompassMark" funcname="fc_removeCompassMark">
+			<param name="MarkID" desc="ID of the mark" type="int"/>
+		</function>
+
+		<function name="ResetCompassMarks" funcname="fc_resetCompassMarks" />
+
+		<function name="UpdateCompassMarks" funcname="fc_updateCompassMarks">
+			<param name="Angle" desc="Angle of the mark" type="float"/>
+		</function>
+
+		<function name="ChangeCompassMark" funcname="fc_changeCompassMark">
+			<param name="MarkID" desc="ID of the mark" type="int"/>
+			<param name="State" desc="State of the mark" type="int"/>
+			<param name="Distance" desc="Distance to player in meters" type="float"/>
+			<param name="Angle" desc="Angle of the mark" type="float"/>
+      <param name="IsInside" desc="player is inside area" type="bool"/>
+		</function>
+
+		<!-- Interactive dialogue -->
+    <function name="OnTopicsChanged" funcname="fc_topicsChanged" dynamic="1">
+			<param name="IsCleared" desc="True when topic list is empty." type="bool" />
+			<param name="IsOnRight" desc="True when topic list should be displayed on right." type="bool" />
+		</function>
+
+      <function name="SetDialogNumber" funcname="fc_setDialogNumber" dynamic="1">
+        <param name="Value" desc="Number which show on label" type="float" />
+        <param name="Money" desc="Money which you have" type="float" />
+        <param name="DirectionToPlayer" desc="false money to npc, true money to player" type="bool" />
+      </function>
+
+      <function name="CloseDialogNumber" funcname="fc_closeDialogNumber" dynamic="1"/>
+
+		<function name="OnTopicInput" funcname="fc_topicInput" dynamic="0">
+			<param name="Min" desc="Min input value." type="int" />
+			<param name="Max" desc="Max input value." type="int" />
+			<param name="NpcValue" desc="Current npc value." type="int" />
+      <param name="PlayerValue" desc="Current player input value." type="int" />
+      <param name="PreviousNpcValue" desc="Previous npc value." type="int" />
+      <param name="OriginalValue" desc="Previous player input value." type="int" />
+      <param name="Anger" desc="How much is npc angry from 0 (happy) to 1 (angry)." type="float" />
+      <param name="PreviousAnger" desc="Prewious how much is npc angry from 0 (happy) to 1 (angry)." type="float" />
+      <param name="Money" desc="Prewious how much is npc angry from 0 (happy) to 1 (angry)." type="float" />
+			<param name="IsOnRight" desc="True when topic list should be displayed on right." type="bool" />
+		</function>
+
+		<function name="OnActiveTopicChanged" funcname="fc_activeTopicChanged">
+			<param name="Index" desc="Active topic index (zero based)" type="int" />
+      <param name="Stopper" desc="Call animation that you can not continue" type="int" />
+		</function>
+
+    <function name="SetDialogStats" funcname="fc_setDialogStats">
+      <param name="IsOnRight" desc="True when topic list should be displayed on right." type="bool" />
+      <param name="NameNPC" desc="ui name of opponent in dialogue" type="string" />
+      <param name="NamePlayer" desc="ui name of player" type="string" />
+      <param name="Reputation" desc="number from -1 to 1 reputation which I have from NPC" type="float" />
+      <param name="SpeechPlayerBase" desc="my based stat" type="float" />
+      <param name="CharismaPlayerBase" desc="my based stat" type="float" />
+      <param name="BadassnessPlayerBase" desc="my based stat" type="float" />
+      <param name="SpeechPlayer" desc="my buffed stat" type="float" />
+      <param name="CharismaPlayer" desc="my buffed stat" type="float" />
+      <param name="BadassnessPlayer" desc="my buffed stat" type="float" />
+      <param name="SpeechNPC" desc="NPC based stat, less than 0 mean is uknown" type="float" />
+      <param name="CharismaNPC" desc="NPC based stat, less than 0 mean is uknown" type="float" />
+      <param name="BadassnessNPC" desc="NPC based stat, less than 0 mean is uknown" type="float" />
+    </function>
+
+    <function name="OnTimeLimitChanged" funcname="fc_timeLimitChanged">
+			<param name="limit" desc="from 1 to 0 count down" type="float" />
+		</function>
+
+    <function name="CloseDialogStats" funcname="fc_closeDialogStats" />
+
+		<!-- Subtitles -->
+		<function name="SetSubtitles" funcname="fc_setSubtitles">
+			<param name="Text" desc="Subtitles text to be set. (can be HTML)" type="string" />
+		</function>
+
+		<!-- Tutorial message -->
+		<function name="SetTutorialMessage" funcname="fc_setTutorialMessage">
+			<param name="Text" desc="Tutorial message text to be set. (can be HTML)" type="string" />
+      <param name="InDialogue" desc="should synchronize with showing dialogue prompts" type="bool" />
+		</function>
+
+		<function name="SetTutorialButtons" funcname="fc_setTutorialButtons">
+			<param name="Controls" desc="Array of split actual controllers which was needed in tutorial" type="string" />
+		</function>
+
+		<function name="HideMessage" funcname="fc_hideMessage" />
+
+		<!-- Buff -->
+		<function name="OnBuffAdded" funcname="fc_addBuff">
+			<param name="BuffId" desc="unique name of buff" type="string" />
+			<param name="IconId" desc="number of key frame with buff" type="int"/>
+      <param name="UIName" desc="name of buff" type="string"/>
+      <param name="Type" desc="buff/debuff/bleeding" type="int"/>
+      <param name="Order" desc="ess then zero is left, greater is right" type="int"/>
+      <param name="perkUIName" desc="name of perk" type="string"/>
+      <param name="perkIconId" desc="id of perk" type="string"/>
+      <param name="Visibility" desc="buff show only in inventory" type="int"/>
+		</function>
+
+		<function name="OnBuffUpdated" funcname="fc_updateBuff">
+			<param name="BuffId" desc="unique name of buff" type="string" />
+			<param name="Progress" desc="from 0 to 1" type="float"/>
+      <param name="SecondProgress" desc="two state" type="int"/>
+		</function>
+
+		<function name="OnBuffRemoved" funcname="fc_removeBuff">
+			<param name="BuffId" desc="unique name of buff" type="string" />
+		</function>
+
+    <function name="OnSwapBuffId" funcname="fc_swapBuffId">
+			<param name="OldBuffId" desc="previous unique name of buff" type="string" />
+      <param name="NewBuffId" desc="new unique name of buff" type="string" />
+		</function>
+
+      <!-- Level up -->
+      <function name="OnShowLevelUp" funcname="fc_showLevelUp">
+        <param name="Stat" desc="unique name of stat" type="string" />
+        <param name="StatName" desc="string key" type="string" />
+        <param name="OnlyXP" desc="not level up only get xp from script" type="bool" />
+        <param name="NewPerkpoint" desc="count new perk points" type="int" />
+      </function>
+
+      <!-- Reputation notification -->
+      <function name="OnShowReputationNotification" funcname="fc_showReputationNotification">
+        <param name="EventId" desc="id of event" type="int" />
+        <param name="Message" desc="string key" type="string" />
+      </function>
+
+      <!-- Discovered message -->
+      <function name="SetDiscoveredMessage" funcname="fc_setDiscoveredMessage">
+        <param name="Type" desc="enum define type Location/POI/etc." type="int" />
+        <param name="Name" desc="name of Location/POI/etc." type="string" />
+        <param name="IconId" desc="id of icon if exist" type="int" />
+      </function>
+
+      <!-- set wanted -->
+      <function name="OnSetWanted" funcname="fc_setWanted">
+        <param name="state" desc="0 nothing, 1 penalty, 2 jail, 3 execution" type="int" />
+      </function>
+
+      <!-- set tresspasing -->
+      <function name="SetTresspasing" funcname="fc_setTresspasing">
+        <param name="state" desc="0 for hide, 1 for state private area, 2 for tresspasing" type="int" />
+      </function>
+
+      <!-- set combat state -->
+      <function name="SetCombatState" funcname="fc_setCombat">
+        <param name="state" desc="0 for hide, 1 for combat, 2 for semi combat" type="int" />
+      </function>
+
+      <!-- Set progress of hold cursor -->
+      <function name="SetProgress" funcname="fc_setProgress">
+			<param name="Value" desc="Set progress" type="int" />
+      <param name="ActionId" desc="id of action hint" type="int" />
+		</function>
+
+      <!-- Show denial cursor -->
+      <function name="ShowDenialAttack" funcname="fc_showDenialAttack" />
+
+		<!-- Info text -->
+		<function name="ShowInfoText" funcname="fc_showInfoText">
+			<param name="Text" desc="Text of info text" type="string" />
+      <param name="ForceShow" desc="hide all info messages in queue" type="bool" />
+      <param name="Duration" desc="time in sec visibility of message" type="int" />
+		</function>
+
+    <function name="HideInfoText" funcname="fc_hideInfoText"/>
+
+    <!-- Quest event -->
+    <function name="ShowQuestEvent" funcname="fc_showQuestEvent">
+      <param name="Type" desc="Enum of event 0-6" type="int" />
+      <param name="Hint" desc="Type of event" type="string" />
+      <param name="Name" desc="Name of quest/objective" type="string" />
+    </function>
+
+    <function name="ShowPerkNotification" funcname="fc_showPerkNotification">
+      <param name="IconName" desc="Enum of event 0-6" type="string" />
+      <param name="uiName" desc="Name of perk" type="string" />
+    </function>
+
+    <function name="ShowNotification" funcname="fc_showNotification">
+      <param name="infoText" desc="text" type="string" />
+    </function>
+
+    <!-- Fast travel result -->
+    <function name="ShowRandomEventResult" funcname="fc_showRandomEventResult">
+      <param name="Type" desc="Enum of event 0-2" type="int" />
+      <param name="Result" desc="Text of result" type="string" />
+      <param name="Name" desc="Name of event" type="string" />
+    </function>
+
+	<!-- Stat check -->
+	<function name="ShowStatCheck" funcname="fc_showStatCheck">
+      		<param name="StatId" desc="Enum of stat" type="int" />
+      		<param name="Result" desc="Enum of result: 0 fail, 1 succes" type="int" />
+    	</function>
+
+  <!-- items transfer -->
+  <function name="ShowItemsTransfer" funcname="fc_showItemsTransfer">
+      		<param name="uiName" desc="" type="string" />
+          <param name="IconId" desc="" type="int" />
+          <param name="Count" desc="count of items" type="int" />
+          <param name="Direction" desc="true mean you got item, false mean you gave item" type="bool" />
+  </function>
+
+    <!-- Dice minigame score -->
+      <function name="ShowDiceScore" funcname="fc_showDiceScore">
+        		<param name="currentPlayer" desc="" type="int" />
+        		<param name="totalPlayer" desc="" type="int" />
+            <param name="selectedPlayer" desc="" type="int" />
+            <param name="currentNPC" desc="" type="int" />
+        		<param name="totalNPC" desc="" type="int" />
+            <param name="selectedNPC" desc="" type="int" />
+            <param name="targetScore" desc="" type="int" />
+      </function>
+
+      <function name="HideDiceScore" funcname="fc_hideDiceScore"/>
+
+      <function name="AddDiceSelector" funcname="fc_addDiceSelector">
+        		<param name="id" desc="" type="int" />
+        		<param name="x" desc="position in 1920x1080 space" type="float" />
+            <param name="y" desc="position in 1920x1080 space" type="float" />
+      </function>
+
+      <function name="RemoveDiceSelector" funcname="fc_removeDiceSelector">
+        		<param name="id" desc="" type="int" />
+      </function>
+
+      <function name="ShowDiceCursor" funcname="fc_showDiceCursor">
+        		<param name="x" desc="position in 1920x1080 space" type="float" />
+            <param name="y" desc="position in 1920x1080 space" type="float" />
+      </function>
+
+      <function name="MoveDiceCursor" funcname="fc_moveDiceCursor">
+        		<param name="x" desc="new position in 1920x1080 space" type="float" />
+            <param name="y" desc="new position in 1920x1080 space" type="float" />
+            <param name="duration" desc="duration of animation in sec" type="float" />
+      </function>
+
+      <function name="HideDiceCursor" funcname="fc_hideDiceCursor" />
+
+      <function name="ShowDiceName" funcname="fc_showDiceName">
+        		<param name="diceName" desc="" type="string" />
+      </function>
+
+      <function name="HideDiceName" funcname="fc_hideDiceName" />
+
+      <!-- Archery minigame score -->
+      <function name="ShowArcheryTable" funcname="fc_showArcheryTable">
+            <param name="playerName" desc="ui name of player" type="string" />
+            <param name="opponentName1" desc="ui name of first opponent" type="string" />
+            <param name="opponentName2" desc="ui name of second opponent" type="string" />
+            <param name="playerArrows" desc="count of arrows" type="int" />
+            <param name="opponentArrows1" desc="count of arrows" type="int" />
+            <param name="opponentArrows2" desc="count of arrows" type="int" />
+      </function>
+
+      <function name="HideArcheryTable" funcname="fc_hideArcheryTable" />
+
+      <function name="UpdateArcheryTable" funcname="fc_updateArcheryTable">
+            <param name="playerArrows" desc="count of arrows" type="int" />
+            <param name="opponentArrows1" desc="count of arrows" type="int" />
+            <param name="opponentArrows2" desc="count of arrows" type="int" />
+            <param name="playerPoints" desc="players score" type="int" />
+            <param name="opponentPoints1" desc="first opponents score" type="int" />
+            <param name="opponentPoints2" desc="second opponents score" type="int" />
+      </function>
+
+      <function name="ShowArcheryHit" funcname="fc_showArcheryHit">
+            <param name="xPos" desc="from -1 to 1" type="float" />
+            <param name="yPos" desc="from -1 to 1" type="float" />
+      </function>
+
+      <!-- PopUp Dialog -->
+      <function name="SetPopUp" funcname="fc_setPopUp">
+        <param name="State" desc="Label of frame" type="string" />
+      </function>
+
+    </functions>
+
+   <events>
+     <event name="OnTutorialButtonSet" fscommand="onTutorialButtonSet" desc="Want to translate buttons name">
+       <param name="ButtonCodeArr" desc="array split by vertical bar" type="string"/>
+     </event>
+
+     <event name="OnTutorialHideInDialogue" fscommand="onTutorialHideInDialogue" desc="call only from hide from dialogue"/>
+
+     <event name="OnSound" fscommand="OnSound" desc="Plays sound event">
+       <param name="Event" desc="Sound event name" type="string"/>
+     </event>
+
+    </events>
+
+	<MovieClips>
+		<MovieClip name="MasterSwitch" instancename="all" />
+
+    <!-- master elements for visibility switch from code -->
+    <MovieClip name="Compass" instancename="tc.mc_CompassEle" />
+    <MovieClip name="Stats" instancename="bc.mc_StatsContainer.mc_StatsEle" />
+    <MovieClip name="Subtitles" instancename="bc.mc_Subtitles" />
+    <MovieClip name="InfoText" instancename="cccursor.mc_InfoText" />
+	  <MovieClip name="EventLog" instancename="tr.mc_EventLog" />
+    <MovieClip name="Hints" instancename="br.mc_HintsEle" />
+    <MovieClip name="DialogLeft" instancename="cl" />
+    <MovieClip name="DialogRight" instancename="cr" />
+    <MovieClip name="Cursor" instancename="cccursor.actioncursor" />
+    <MovieClip name="HoldCursor" instancename="cccursor.holdcursor" />
+    <MovieClip name="DiceCursor" instancename="cccursor.dice" />
+    <MovieClip name="Wanted" instancename="tc.wanted" />
+    <MovieClip name="Tresspasing" instancename="tc.tresspasing" />
+    <MovieClip name="Combat" instancename="tc.combat" />
+    <MovieClip name="Bubbles" instancename="cccursor.bubbles" />
+
+    <MovieClip name="PopUpBackground" instancename="popUp" />
+	  <MovieClip name="TutorialMessage" instancename="tr.mc_TutorialMessage" />
+    <MovieClip name="QuestEvent" instancename="tc.questEvent" />
+    <MovieClip name="StatCheck" instancename="bc.mc_StatCheck" />
+    <MovieClip name="Buffs" instancename="bc.mc_BuffsEle" />
+    <MovieClip name="LevelUp" instancename="tl.levelUpContainer" />
+    <MovieClip name="DiceNPCContainer" instancename="tl.diceScoreNPCContainer" />
+    <MovieClip name="RatioStrips" instancename="ratioStrips" />
+    <MovieClip name="DialogWindow" instancename="dialogWindow" />
+    <MovieClip name="ArcheryContainer" instancename="bl.archeryContainer" />
+    <MovieClip name="DicePlayerContainer" instancename="bl.diceScorePlayerContainer" />
+
+    <!-- other elements control from code and flow graph -->
+
+	<MovieClip name="CursorOutline" instancename="cccursor.actioncursor.ActionCursorOutline" />
+	<MovieClip name="CursorCross" instancename="cccursor.actioncursor.ActionCursorCross" />
+	<MovieClip name="CombatCursorCross" instancename="cccursor.actioncursor.CombatCursorCross" />
+  <MovieClip name="CursorCrossPBSlot" instancename="cccursor.actioncursor.CombatCursorCross.pbslot" />
+  <MovieClip name="CursorCrossOpponentLock" instancename="cccursor.actioncursor.CombatCursorCross.lock" />
+
+	<MovieClip name="CompassStrip" instancename="tc.mc_CompassEle.mc_Compass" />
+    <MovieClip name="CompassMarksOver" instancename="tc.mc_CompassEle.mc_CompassMarksOver" />
+    <MovieClip name="CompassMarksUnder" instancename="tc.mc_CompassEle.mc_CompassMarksUnder" />
+
+		<MovieClip name="HealthBar" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_HealthBar" />
+    <MovieClip name="HealthBreak" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_Break" />
+
+		<MovieClip name="StaminaBar" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_StaminaBar" />
+    <MovieClip name="StaminaBreak" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_StaminaBreak" />
+    <MovieClip name="StaminaBackground" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_StaminaBackground" />
+    <MovieClip name="StaminaGlow" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_StaminaGlow" />
+    <MovieClip name="StaminaGlowShow" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_StaminaGlow.mc_Glow" />
+
+    <MovieClip name="HorseStaminaBarContainer" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_HorseStaminaAnimBar" />
+    <MovieClip name="HorseStaminaBar" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_HorseStaminaAnimBar.mc_HorseStaminaBar" />
+    <MovieClip name="HorseStaminaBreakContainer" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_HorseStaminaAnimBreak" />
+    <MovieClip name="HorseStaminaBreak" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_HorseStaminaAnimBreak.mc_HorseStaminaBreak" />
+
+    <MovieClip name="OpponentHealthBarContainer" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_OponentHealthAnimBar" />
+    <MovieClip name="OpponentHealthBar" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_OponentHealthAnimBar.mc_OponentHealthBar" />
+    <MovieClip name="OpponentHealthBreakContainer" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_OponentHealthAnimBreak" />
+    <MovieClip name="OpponentHealthBreak" instancename="bc.mc_StatsContainer.mc_StatsEle.mc_OponentHealthAnimBreak.mc_OponentHealthBreak" />
+
+		<MovieClip name="bubble1" instancename="cccursor.bubbles.mc_speachText1" />
+		<MovieClip name="bubble2" instancename="cccursor.bubbles.mc_speachText2" />
+		<MovieClip name="bubble3" instancename="cccursor.bubbles.mc_speachText3" />
+		<MovieClip name="bubble4" instancename="cccursor.bubbles.mc_speachText4" />
+		<MovieClip name="bubble5" instancename="cccursor.bubbles.mc_speachText5" />
+		<MovieClip name="bubble6" instancename="cccursor.bubbles.mc_speachText6" />
+		<MovieClip name="bubble7" instancename="cccursor.bubbles.mc_speachText7" />
+		<MovieClip name="bubble8" instancename="cccursor.bubbles.mc_speachText8" />
+    <MovieClip name="bubble9" instancename="cccursor.bubbles.mc_speachText9" />
+    <MovieClip name="bubble10" instancename="cccursor.bubbles.mc_speachText10" />
+    <MovieClip name="bubble11" instancename="cccursor.bubbles.mc_speachText11" />
+    <MovieClip name="bubble12" instancename="cccursor.bubbles.mc_speachText12" />
+    <MovieClip name="bubble13" instancename="cccursor.bubbles.mc_speachText13" />
+    <MovieClip name="bubble14" instancename="cccursor.bubbles.mc_speachText14" />
+    <MovieClip name="bubble15" instancename="cccursor.bubbles.mc_speachText15" />
+    <MovieClip name="bubble16" instancename="cccursor.bubbles.mc_speachText16" />
+
+	</MovieClips>
+
+	<arrays>
+		<array name="topicInfo" varname="m_FG_TopicInfo" />
+	</arrays>
+
+  </UIElement>
+
+</UIElements>

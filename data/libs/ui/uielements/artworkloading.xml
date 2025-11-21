@@ -1,0 +1,26 @@
+<UIElements name="Common">
+
+  <UIElement name="ArtworkLoading" >
+
+    <GFx file="artwork_loading.gfx" layer="50">
+      <Constraints>
+        <Align mode="dynamic" valign="center" halign="center" scale="0" max="0" />
+      </Constraints>
+    </GFx>
+
+    <variables>
+    </variables>
+
+    <functions>
+      <function name="PlayLoadingScreen" funcname="fc_playLoadingScreen" desc="">
+        <param name="levelId" desc="id from table level, column loading screen id" type="int"/>
+      </function>
+    </functions>
+
+    <events>
+      <event name="CanStop" fscommand="canStop" desc="" />
+    </events>
+
+  </UIElement>
+
+</UIElements>
