@@ -390,7 +390,7 @@
     <MovieClip name="Buffs" instancename="bc.mc_BuffsEle" />
     <MovieClip name="LevelUp" instancename="tl.levelUpContainer" />
     <MovieClip name="DiceNPCContainer" instancename="tl.diceScoreNPCContainer" />
-    <MovieClip name="RatioStrips" instancename="ratioStrips" />
+    <!-- <MovieClip name="RatioStrips" instancename="ratioStrips" /> -->
     <MovieClip name="DialogWindow" instancename="dialogWindow" />
     <MovieClip name="ArcheryContainer" instancename="bl.archeryContainer" />
     <MovieClip name="DicePlayerContainer" instancename="bl.diceScorePlayerContainer" />
