@@ -4,7 +4,7 @@
 
     <GFx file="Menus_Startmenu.gfx" layer="45">
       <Constraints>
-        <Align mode="dynamic" valign="center" halign="center" scale="0" max="0" />
+        <Align mode="dynamic" valign="center" halign="center" scale="1" max="0" />
       </Constraints>
     </GFx>
 
