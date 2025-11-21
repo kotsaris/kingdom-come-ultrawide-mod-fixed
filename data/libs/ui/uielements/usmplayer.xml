@@ -6,7 +6,7 @@
       <Constraints>
 		<!-- <Align mode="fixed"/>
 		<Position top="0" left="1600" width="2560" height="1080" /> -->
-        <Align mode="dynamic" valign="center" halign="center" scale="0" max="0"/>
+        <Align mode="dynamic" valign="center" halign="center" scale="1" max="0"/>
         <!-- <Align mode="fullscreen" scale="0" /> -->
       </Constraints>
     </GFx>

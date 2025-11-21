@@ -4,7 +4,7 @@
 
     <GFx file="GameOver.gfx" layer="40">
       <Constraints>
-        <Align mode="dynamic" valign="bottom" halign="center" scale="0" max="0" />
+        <Align mode="dynamic" valign="bottom" halign="center" scale="1" max="0" />
       </Constraints>
     </GFx>
 
