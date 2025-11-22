@@ -32,6 +32,11 @@ if ($createPublicRelease) {
 
     cp .\MyPak.pak .\ultra_widescreen\data\data.pak -Force
 
+    # Copy disclaimer to release folder
+    if (Test-Path -Path ".\DISCLAIMER.md") {
+        cp .\DISCLAIMER.md .\ultra_widescreen\DISCLAIMER.md -Force
+    }
+
     Compress-Archive .\ultra_widescreen\ ultra_widescreen.zip
 }
 
