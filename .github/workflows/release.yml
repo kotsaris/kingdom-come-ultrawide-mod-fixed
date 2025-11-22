@@ -33,12 +33,14 @@ jobs:
         run: |
           .\bundle-copy.ps1 -createPublicRelease
 
-      - name: Get short SHA
+      - name: Get short SHA and date
         id: slug
         shell: pwsh
         run: |
           $shortSha = "${{ github.sha }}".Substring(0, 7)
+          $date = Get-Date -Format "yyyy-MM-dd"
           echo "sha=$shortSha" >> $env:GITHUB_OUTPUT
+          echo "date=$date" >> $env:GITHUB_OUTPUT
 
       - name: Create Release
         id: create_release
@@ -47,7 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: release-${{ steps.slug.outputs.sha }}
-          release_name: Ultrawide Mod Release ${{ steps.slug.outputs.sha }}
+          release_name: Ultrawide Mod Release ${{ steps.slug.outputs.date }} (${{ steps.slug.outputs.sha }})
           draft: false
           prerelease: false
 
